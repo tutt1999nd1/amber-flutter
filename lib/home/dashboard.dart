@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../authentication/constants/constants.dart';
+import '../authentication/signin.dart';
 import 'account_page.dart';
 import 'bussiness_page.dart';
 import 'home_page.dart';
@@ -60,11 +61,11 @@ class _DashBoardState extends State<DashBoard> {
             ),
             ListTile(
               title: Text('Log Out'),
-              // onTap: (){
-              //   Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => SignInScreen()));
-              // },
+              onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignInScreen()));
+              },
             )
           ],
         ),
