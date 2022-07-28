@@ -1,8 +1,11 @@
 import 'package:example/CustomWidget/navbar.dart';
-import 'package:example/pages/account_page.dart';
-import 'package:example/pages/bussiness_page.dart';
-import 'package:example/pages/home_page.dart';
+import 'package:example/authentication/signin.dart';
+import 'package:example/home/account_page.dart';
+import 'package:example/home/bussiness_page.dart';
+import 'package:example/home/home_page.dart';
 import 'package:flutter/material.dart';
+
+import 'authentication/constants/constants.dart';
 
 void main() => runApp(const MyApp());
 
@@ -49,10 +52,43 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       appBar: AppBar(
         title: const Text('BottomNavigationBar Sample'),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      // body: Center(
+      //   child: _widgetOptions.elementAt(_selectedIndex),
+      // ),
+      body: SignInScreen(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                  color: Colors.black
+              ),
+              child: Icon(Icons.person_sharp,
+                color: kPrimaryColor,
+                size: 150,
+              ),),
+            ListTile(
+              title: Text('Profile'),
+              onTap: (){
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => ProfileScreen()),
+                // );
+              },
+            ),
+            ListTile(
+              title: Text('Log Out'),
+              onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignInScreen()));
+              },
+            )
+          ],
+        ),
       ),
-      drawer: NavBar(),
+
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
