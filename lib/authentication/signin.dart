@@ -14,18 +14,13 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
+
+  TextEditingController email = new TextEditingController();
   bool signIn(){
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(email.text),
-    ));
+    print(email.text);
+    print(password.text);
     if(email.text=='admin' && password.text =='123456'){
-      print(email.text);
-      print(password.text);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(email.text),
-      ));
       return true;
     }
     else return false;
@@ -113,7 +108,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           Expanded(
                             child: TextField(
                               controller: password,
-                              obscureText: true,
+                              // obscureText: true,
                               decoration: InputDecoration(
                                   prefixIcon:
                                   Icon(Icons.lock, color: kPrimaryColor),
@@ -137,29 +132,17 @@ class _SignInScreenState extends State<SignInScreen> {
                     Padding(padding: const EdgeInsets.only(bottom: 5), child:
                     ElevatedButton(
                       onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              // Retrieve the text the that user has entered by using the
-                              // TextEditingController.
-                              content: Text(email.text),
-                            );
-                          },
-                        );
                         // Respond to button press
-                        if(signIn == true){
+                        if(signIn() == true){
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: ((context) => DashBoard())));
                         }
                         else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("Login fail"),
+                            content: Text("User account or password incorrect"),
                           ));
                         }
-
-
                       },
                       child: Text('Login'),
                       // style: ButtonStyle(

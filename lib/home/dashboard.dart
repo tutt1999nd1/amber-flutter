@@ -5,6 +5,7 @@ import '../authentication/signin.dart';
 import 'account_page.dart';
 import 'bussiness_page.dart';
 import 'home_page.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -50,15 +51,15 @@ class _DashBoardState extends State<DashBoard> {
                 color: kPrimaryColor,
                 size: 150,
               ),),
-            ListTile(
-              title: Text('Profile'),
-              onTap: (){
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => ProfileScreen()),
-                // );
-              },
-            ),
+            // ListTile(
+            //   title: Text('Profile'),
+            //   onTap: (){
+            //     // Navigator.push(
+            //     //   context,
+            //     //   MaterialPageRoute(builder: (context) => ProfileScreen()),
+            //     // );
+            //   },
+            // ),
             ListTile(
               title: Text('Log Out'),
               onTap: (){
