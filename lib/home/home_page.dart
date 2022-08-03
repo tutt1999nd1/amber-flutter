@@ -3,6 +3,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import '../authentication/constants/constants.dart';
+import 'chartFlutter.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class _BarChart extends StatelessWidget {
   const _BarChart({Key? key}) : super(key: key);
@@ -223,9 +225,21 @@ class BarChartSample3State extends State<BarChartSample3> {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  // final data = [
+  //   new OrdinalSales('2014', 5),
+  //   new OrdinalSales('2015', 25),
+  //   new OrdinalSales('2016', 100),
+  //   new OrdinalSales('2017', 75),
+  // ];
+  late List<charts.Series> seriesList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -242,7 +256,8 @@ class HomePage extends StatelessWidget {
           // }
         },
         blurValue: 1,
-        builder: Builder(builder: (context) => const BarChartSample3()),
+        // builder: Builder(builder: (context) => const BarChartSample3()),
+        builder: Builder(builder: (context) =>  SimpleBarChart.withSampleData()),
         autoPlayDelay: const Duration(seconds: 3),
       ),
     );
