@@ -193,16 +193,17 @@ class BarChartSample3 extends StatefulWidget {
 
 class BarChartSample3State extends State<BarChartSample3> {
   final GlobalKey _one = GlobalKey();
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
-          (_) => ShowCaseWidget.of(context)
-          .startShowCase([_one]),
+      (_) => ShowCaseWidget.of(context).startShowCase([_one]),
     );
     //Start showcase view after current widget frames are drawn.
     //NOTE: remove ambiguate function if you are using
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -240,6 +241,7 @@ class _HomePageState extends State<HomePage> {
   //   new OrdinalSales('2017', 75),
   // ];
   late List<charts.Series> seriesList;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -257,12 +259,80 @@ class _HomePageState extends State<HomePage> {
         },
         blurValue: 1,
         // builder: Builder(builder: (context) => const BarChartSample3()),
-        builder: Builder(builder: (context) =>  SimpleBarChart.withSampleData()),
+        builder: Builder(
+            builder: (context) => Column(
+                  children: [
+                    Expanded(flex: 1, child: Padding(padding:const EdgeInsets.symmetric(horizontal: 20) ,child: SimpleBarChart.withSampleData())),
+                    Expanded(flex: 2, child: Padding(padding:const EdgeInsets.symmetric(horizontal: 5) ,child: Data()))
+
+                  ],
+                )),
         autoPlayDelay: const Duration(seconds: 3),
       ),
     );
   }
 }
+class Data extends StatefulWidget {
+  const Data({Key? key}) : super(key: key);
+
+  @override
+  State<Data> createState() => _DataState();
+}
+
+class _DataState extends State<Data> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: DataTable(
+        columns: const <DataColumn>[
+          DataColumn(
+            label: Text(
+              'Name',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Age',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Role',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ],
+        rows: const <DataRow>[
+          DataRow(
+            cells: <DataCell>[
+              DataCell(Text('Sarah')),
+              DataCell(Text('19')),
+              DataCell(Text('Student')),
+            ],
+          ),
+          DataRow(
+            cells: <DataCell>[
+              DataCell(Text('Janine')),
+              DataCell(Text('43')),
+              DataCell(Text('Professor')),
+            ],
+          ),
+          DataRow(
+            cells: <DataCell>[
+              DataCell(Text('William')),
+              DataCell(Text('27')),
+              DataCell(Text('Associate Professor')),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 // class HomePage extends StatefulWidget {
 //   const HomePage({Key? key}) : super(key: key);

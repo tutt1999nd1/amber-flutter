@@ -1,8 +1,9 @@
 /// Bar chart example
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:showcaseview/showcaseview.dart';
 
-class SimpleBarChart extends StatelessWidget {
+class SimpleBarChart extends StatefulWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
@@ -19,12 +20,7 @@ class SimpleBarChart extends StatelessWidget {
 
 
   @override
-  Widget build(BuildContext context) {
-    return new charts.BarChart(
-      List.from(seriesList),
-      animate: true,
-    );
-  }
+  State<SimpleBarChart> createState() => _SimpleBarChartState();
 
   /// Create one series with sample hard coded data.
   static List<charts.Series<OrdinalSales, String>> _createSampleData() {
@@ -44,6 +40,31 @@ class SimpleBarChart extends StatelessWidget {
         data: data,
       )
     ];
+  }
+}
+
+class _SimpleBarChartState extends State<SimpleBarChart> {
+  final GlobalKey _one = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(
+          (_) => ShowCaseWidget.of(context)
+          .startShowCase([_one]),
+    );
+    //Start showcase view after current widget frames are drawn.
+    //NOTE: remove ambiguate function if you are using
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Showcase(
+        key: _one,
+        description: 'Đồ thị',
+        child: new charts.BarChart(
+          List.from(widget.seriesList),
+          animate: true,
+        ));
   }
 }
 

@@ -6,6 +6,7 @@ import 'package:example/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 import 'authentication/constants/constants.dart';
+import 'home/dashboard.dart';
 
 void main() => runApp(const MyApp());
 
@@ -53,7 +54,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       //   child: _widgetOptions.elementAt(_selectedIndex),
       // ),
       // body: SignInScreen(),
-      body: SignInScreen(),
+      // body: SignInScreen(),
+      body: DashBoard(),
     );
   }
 }
