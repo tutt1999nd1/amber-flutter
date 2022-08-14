@@ -1,12 +1,13 @@
-import 'package:example/CustomWidget/navbar.dart';
-import 'package:example/authentication/signin.dart';
-import 'package:example/home/account_page.dart';
-import 'package:example/home/bussiness_page.dart';
-import 'package:example/home/home_page.dart';
-import 'package:flutter/material.dart';
+import 'dart:html';
 
-import 'authentication/constants/constants.dart';
-import 'home/dashboard.dart';
+import 'package:example/CustomWidget/navbar.dart';
+import 'package:example/page/home/account_page.dart';
+import 'package:example/page/home/bussiness_page.dart';
+import 'package:example/page/home/dashboard.dart';
+import 'package:example/page/home/home_page.dart';
+import 'package:example/page/intro/intro.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -32,19 +33,12 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    BusinessPage(),
-    AccountPage(),
-  ];
+  String token = '';
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  void initState() {
+// Create storage
+//     checkToken();
   }
 
   @override
@@ -55,7 +49,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       // ),
       // body: SignInScreen(),
       // body: SignInScreen(),
-      body: DashBoard(),
+      // body: DashBoard(),
+      // body: DashBoard(),
+      body: Intro(),
     );
   }
+
+
 }
