@@ -2,8 +2,11 @@ import 'package:example/page/authentication/signin.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
+import '../../utils/utils.dart';
+import '../home/dashboard.dart';
 import '../home/home_page.dart';
 
 
@@ -35,6 +38,20 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => SignInScreen()),
     );
+  }
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero,() async {
+      var check = await Utils.checkToken();
+      if(check == true){
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: ((context) => DashBoard())));
+      }
+
+      //here is the async code, you can execute any async code here
+    });
   }
 
   Widget _buildFullscreenImage() {

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../home/dashboard.dart';
 import 'constants/constants.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -29,6 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   void initState() {
+
     Future.delayed(Duration.zero,() async {
       var check = await checkToken();
       if(check == true){
@@ -164,9 +166,23 @@ class _SignInScreenState extends State<SignInScreen> {
                         // Respond to button press
                         var check = await signIn();
                         if(check == true){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: ((context) => DashBoard())));
+                          EasyLoading.show(
+
+                          );
+                          // EasyLoading.dismiss();
+                          Future.delayed(const Duration(milliseconds: 1000), () {
+
+// Here you can write your code
+                            EasyLoading.dismiss();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: ((context) => DashBoard())));
+                            setState(() {
+                              // Here you can write your code for open new view
+                            });
+
+                          });
+
                         }
                         else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
