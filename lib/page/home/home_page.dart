@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:showcaseview/showcaseview.dart';
 
+import '../../CustomWidget/widget_coin_2.dart';
 import '../authentication/constants/constants.dart';
 import 'chartFlutter.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
   Function openDrawer;
   Function changeTabWallet;
 
-  HomePage({required this.openDrawer,required this.changeTabWallet});
+  HomePage({required this.openDrawer, required this.changeTabWallet});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -48,11 +49,11 @@ class _HomePageState extends State<HomePage> {
         // builder: Builder(builder: (context) => const BarChartSample3()),
         builder: Builder(
             builder: (context) => Container(
-                  color: Colors.red,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(top: 10.0),
+                        // margin: const EdgeInsets.only(top: 10.0),
                         child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Row(
@@ -73,59 +74,107 @@ class _HomePageState extends State<HomePage> {
                               ],
                             )),
                       ),
+                      SizedBox(height: 20),
                       Container(
-                        color: Colors.blue,
+                        // margin: EdgeInsets.only(top: 30),
                         child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Row(
                               children: [
                                 Container(
-                                  child:Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Tổng số dư",
-                                        style:
-                                        TextStyle(color: Color(0xff9fa1ad)),
+                                        style: TextStyle(
+                                            color: Color(0xff707A8A),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 13),
                                       ),
                                       Text(
                                         "2.000 \$",
-                                        style:
-                                        TextStyle(fontSize: 30),
+                                        style: TextStyle(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w500),
                                       ),
                                     ],
-                                  ) ,
+                                  ),
                                 ),
                                 Spacer(),
                                 Container(
-                                  child:  IconButton(
+                                  child: IconButton(
                                       icon: Icon(
                                         Icons.arrow_forward_outlined,
                                         color: Colors.amber[800],
                                       ),
-                                      onPressed: () => widget.changeTabWallet(1)),
+                                      onPressed: () =>
+                                          widget.changeTabWallet(1)),
                                 )
                               ],
                             )),
                       ),
+                      SizedBox(height: 20),
                       Expanded(
-                        child: GridView.count(
-                          primary: false,
-                          padding: const EdgeInsets.all(20),
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          crossAxisCount: 1,
+                        flex: 1,
+                        child:
+                        ListView(
+                          // This next line does the trick.
+                          scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            WidgetCoin(),
-                            WidgetCoin(),
-                            WidgetCoin(),
-                            WidgetCoin(),
-                            WidgetCoin(),
-                            WidgetCoin(),
-                            WidgetCoin(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                WidgetCoin2(),
+                                WidgetCoin2(),
+                                WidgetCoin2(),
+                                WidgetCoin2(),
+                                WidgetCoin2(),
+                              ],
+                            )
                           ],
-                        )
+                        ),
+
                       ),
+                      SizedBox(height: 20),
+                      Container(
+                        margin: EdgeInsets.only(top: 30),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Danh sách yêu thích",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 12,
+                          child: SingleChildScrollView(
+                        child: Stack(
+                          children: [
+                            Column(
+                              children: [
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                                WidgetCoin(),
+                              ],
+                            )
+                          ],
+                        ),
+                      )),
                     ],
                   ),
                 )),
