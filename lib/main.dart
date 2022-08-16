@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:example/CustomWidget/custom_animation.dart';
 import 'package:example/CustomWidget/navbar.dart';
+import 'package:example/api/ApiService.dart';
 import 'package:example/page/home/account_page.dart';
 import 'package:example/page/home/bussiness_page.dart';
 import 'package:example/page/home/dashboard.dart';
@@ -60,9 +61,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   void initState() {
+    // _getData();
 // Create storage
 //     checkToken();
   }
+
 
   @override
   Widget build(BuildContext context) {

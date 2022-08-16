@@ -139,7 +139,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           Expanded(
                             child: TextField(
                               controller: password,
-                              // obscureText: true,
+                              obscureText: true,
                               decoration: InputDecoration(
                                   prefixIcon:
                                   Icon(Icons.lock, color: kPrimaryColor),

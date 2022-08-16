@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:example/CustomWidget/widget_coin.dart';
+import 'package:example/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import '../../CustomWidget/widget_coin_2.dart';
+import '../../api/ApiService.dart';
 import '../authentication/constants/constants.dart';
 import 'chartFlutter.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -22,6 +26,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Coin btc1 = new Coin(name: '', id: '', symbol: '', price: 2, price_change_percentage: 0);
+  Coin eth1 = new Coin(name: '', id: '', symbol: '', price: 3, price_change_percentage: 0);
+  Coin solana1 = new Coin(name: '', id: '', symbol: '', price: 3, price_change_percentage: 0);
+
   // final data = [
   //   new OrdinalSales('2014', 5),
   //   new OrdinalSales('2015', 25),
@@ -29,6 +37,38 @@ class _HomePageState extends State<HomePage> {
   //   new OrdinalSales('2017', 75),
   // ];
   late List<charts.Series> seriesList;
+
+  void _getData() async {
+    print("tutt");
+    Coin? b = await ApiService().getCoin("bitcoin");
+    Coin? e = await ApiService().getCoin("ethereum");
+    Coin? s = await ApiService().getCoin("solana");
+    Future.delayed(const Duration(seconds: 1)).then((value) =>
+    {
+      if(mounted){
+        setState(() {
+          btc1 = b!;
+          eth1 = e!;
+          solana1 = s!;
+        })
+      }
+
+    }
+       );
+    // setState(() {
+    //   btc1 = b!;
+    //   eth1 = e!;
+    //   solana1 = s!;
+    // });
+  }
+
+  @override
+  void initState() {
+    Timer.periodic(new Duration(seconds: 3), (timer) {
+      _getData();
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +88,8 @@ class _HomePageState extends State<HomePage> {
         blurValue: 1,
         // builder: Builder(builder: (context) => const BarChartSample3()),
         builder: Builder(
-            builder: (context) => Container(
+            builder: (context) =>
+                Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -84,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                 Container(
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Tổng số dư",
@@ -126,11 +167,10 @@ class _HomePageState extends State<HomePage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                WidgetCoin2(),
-                                WidgetCoin2(),
-                                WidgetCoin2(),
-                                WidgetCoin2(),
-                                WidgetCoin2(),
+                                WidgetCoin2(coin: btc1),
+                                WidgetCoin2(coin: solana1),
+                                WidgetCoin2(coin: eth1),
+
                               ],
                             )
                           ],
@@ -150,31 +190,31 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Expanded(
-                        flex: 12,
+                          flex: 12,
                           child: SingleChildScrollView(
-                        child: Stack(
-                          children: [
-                            Column(
+                            child: Stack(
                               children: [
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
-                                WidgetCoin(),
+                                Column(
+                                  children: [
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                    WidgetCoin(),
+                                  ],
+                                )
                               ],
-                            )
-                          ],
-                        ),
-                      )),
+                            ),
+                          )),
                     ],
                   ),
                 )),
