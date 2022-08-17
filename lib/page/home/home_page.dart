@@ -122,13 +122,7 @@ class _HomePageState extends State<HomePage> {
                                       color: Colors.amber[800],
                                     ),
                                     onPressed: () => widget.openDrawer()),
-                                Spacer(),
-                                IconButton(
-                                    icon: Icon(
-                                      Icons.search,
-                                      color: Colors.amber[800],
-                                    ),
-                                    onPressed: () => widget.openDrawer()),
+
                               ],
                             )),
                       ),
@@ -213,16 +207,16 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Column(
                                   children: [
-                                  WidgetCoin(image: '../../assets/coin/bitcoin.webp',coin:Coin(name: '', id: 'bitcoin', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/cardano.webp',coin:Coin(name: '', id: 'cardano', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/ethereum.webp',coin:Coin(name: '', id: 'ethereum', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/dogecoin.webp',coin:Coin(name: '', id: 'dogecoin', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/gmt.webp',coin:Coin(name: '', id: 'stepn', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/lever.webp',coin:Coin(name: '', id: 'lever', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/near.webp',coin:Coin(name: '', id: 'near', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/polkadot.webp',coin:Coin(name: '', id: 'polkadot', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/bitcoin.webp',coin:Coin(name: '', id: 'bitcoin', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/cardano.webp',coin:Coin(name: '', id: 'cardano', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/ethereum.webp',coin:Coin(name: '', id: 'ethereum', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/dogecoin.webp',coin:Coin(name: '', id: 'dogecoin', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/gmt.webp',coin:Coin(name: '', id: 'stepn', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/lever.webp',coin:Coin(name: '', id: 'lever', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/near.webp',coin:Coin(name: '', id: 'near', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/polkadot.webp',coin:Coin(name: '', id: 'polkadot', symbol: '', price: 0, price_change_percentage: 0)),
                                   // WidgetCoin(image: '../../assets/coin/pond.webp',coin:Coin(name: '', id: 'marlin', symbol: '', price: 0, price_change_percentage: 0)),
-                                  WidgetCoin(image: '../../assets/coin/solana.webp',coin:Coin(name: '', id: 'solana', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: 'assets/coin/solana.webp',coin:Coin(name: '', id: 'solana', symbol: '', price: 0, price_change_percentage: 0)),
                                   ],
                                 )
                               ],
@@ -230,7 +224,8 @@ class _HomePageState extends State<HomePage> {
                           )),
                     ],
                   ),
-                )),
+                )
+        ),
         autoPlayDelay: const Duration(seconds: 3),
       ),
     );

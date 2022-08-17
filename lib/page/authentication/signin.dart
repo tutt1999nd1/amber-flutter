@@ -63,7 +63,7 @@ class _SignInScreenState extends State<SignInScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("../../assets/background.jpeg"),
+            image: AssetImage("assets/background.jpeg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -72,7 +72,7 @@ class _SignInScreenState extends State<SignInScreen> {
             Expanded(
               flex: 1,
               child: Container(
-                child: Image.asset('../../assets/logo.png', width: 300),
+                child: Image.asset('assets/logo.png', width: 300),
               ),
             ),
             Expanded(

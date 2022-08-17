@@ -209,11 +209,11 @@ class _AccountPageState extends State<AccountPage> {
                               children: [
                                 Column(
                                   children: [
-                                    WidgetCoinWallet(image: '../../assets/coin/lever.webp',coin:Coin(name: '', id: 'lever', symbol: '', price: 0, price_change_percentage: 0),total: 4322580,),
-                                    WidgetCoinWallet(image: '../../assets/coin/ethereum.webp',coin:Coin(name: '', id: 'ethereum', symbol: '', price: 0, price_change_percentage: 0),total: 0.8),
-                                    WidgetCoinWallet(image: '../../assets/coin/dogecoin.webp',coin:Coin(name: '', id: 'dogecoin', symbol: '', price: 0, price_change_percentage: 0),total: 3000),
-                                    WidgetCoinWallet(image: '../../assets/coin/solana.webp',coin:Coin(name: '', id: 'solana', symbol: '', price: 0, price_change_percentage: 0),total: 18),
-                                    WidgetCoinWallet(image: '../../assets/coin/bitcoin.webp',coin:Coin(name: '', id: 'bitcoin', symbol: '', price: 0, price_change_percentage: 0),total: 0.2),
+                                    WidgetCoinWallet(image: 'assets/coin/lever.webp',coin:Coin(name: '', id: 'lever', symbol: '', price: 0, price_change_percentage: 0),total: 4322580,),
+                                    WidgetCoinWallet(image: 'assets/coin/ethereum.webp',coin:Coin(name: '', id: 'ethereum', symbol: '', price: 0, price_change_percentage: 0),total: 0.8),
+                                    WidgetCoinWallet(image: 'assets/coin/dogecoin.webp',coin:Coin(name: '', id: 'dogecoin', symbol: '', price: 0, price_change_percentage: 0),total: 3000),
+                                    WidgetCoinWallet(image: 'assets/coin/solana.webp',coin:Coin(name: '', id: 'solana', symbol: '', price: 0, price_change_percentage: 0),total: 18),
+                                    WidgetCoinWallet(image: 'assets/coin/bitcoin.webp',coin:Coin(name: '', id: 'bitcoin', symbol: '', price: 0, price_change_percentage: 0),total: 0.2),
                                   ],
                                 )
                               ],
