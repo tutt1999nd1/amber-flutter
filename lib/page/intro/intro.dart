@@ -52,6 +52,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
       //here is the async code, you can execute any async code here
     });
+
+
+
   }
 
   Widget _buildFullscreenImage() {

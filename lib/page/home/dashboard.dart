@@ -95,7 +95,7 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ),
       body: Center(
-        child: _selectedIndex==0?HomePage(openDrawer: openTheDrawer,changeTabWallet : _onItemTapped):AccountPage(),
+        child: _selectedIndex==0?HomePage(openDrawer: openTheDrawer,changeTabWallet : _onItemTapped):AccountPage(openDrawer: openTheDrawer,changeTabWallet : _onItemTapped),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

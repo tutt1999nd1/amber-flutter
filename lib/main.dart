@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:example/CustomWidget/custom_animation.dart';
 import 'package:example/CustomWidget/navbar.dart';

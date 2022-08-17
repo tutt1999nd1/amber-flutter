@@ -11,6 +11,7 @@ class WidgetCoin2 extends StatefulWidget {
 }
 
 class _WidgetCoin2State extends State<WidgetCoin2> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,22 +23,22 @@ class _WidgetCoin2State extends State<WidgetCoin2> {
           children: [
             Row(
               children: [
-                Text("BTC/USDT",
+                Text("${widget.coin.symbol!='-'?widget.coin.symbol.toUpperCase():"-"}"+"/USDT",
                     style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         fontSize: 16,
                         color: Color(0xff707A8A))),
                 Text(
                     "${num.parse(widget.coin.price_change_percentage.toStringAsFixed(2))}%",
                     style: TextStyle(
-                        color: Color(0xfff6455f),
-                        fontWeight: FontWeight.w500,
+                        color:widget.coin.price_change_percentage<0?Color(0xfff6455f):Color(0xffD2ebd85),
+                        fontWeight: FontWeight.w600,
                         fontSize: 16))
               ],
             ),
             Row(
               children: [
-                Text("${widget.coin.price}",
+                Text("${widget.coin.price} \$",
                     style: TextStyle(
                         color: widget.coin.price_change_percentage<0?Color(0xfff6455f):Color(0xffD2ebd85),
                         fontWeight: FontWeight.w500,

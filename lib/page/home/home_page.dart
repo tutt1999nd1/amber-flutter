@@ -26,10 +26,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Coin btc1 = new Coin(name: '', id: '', symbol: '', price: 2, price_change_percentage: 0);
-  Coin eth1 = new Coin(name: '', id: '', symbol: '', price: 3, price_change_percentage: 0);
-  Coin solana1 = new Coin(name: '', id: '', symbol: '', price: 3, price_change_percentage: 0);
-
+  Coin btc1 = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
+  Coin eth1 = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
+  Coin solana1 = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
+  Coin lever = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
+  Coin eth = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
+  Coin doge = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
+  Coin sol = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
+  Coin btc = new Coin(name: '', id: '', symbol: '-', price: 0, price_change_percentage: 0);
   // final data = [
   //   new OrdinalSales('2014', 5),
   //   new OrdinalSales('2015', 25),
@@ -43,6 +47,11 @@ class _HomePageState extends State<HomePage> {
     Coin? b = await ApiService().getCoin("bitcoin");
     Coin? e = await ApiService().getCoin("ethereum");
     Coin? s = await ApiService().getCoin("solana");
+    Coin? a = await ApiService().getCoin('lever');
+    Coin? b2 = await ApiService().getCoin('ethereum');
+    Coin? c = await ApiService().getCoin('dogecoin');
+    Coin? d = await ApiService().getCoin('solana');
+    Coin? e2 = await ApiService().getCoin('bitcoin');
     Future.delayed(const Duration(seconds: 1)).then((value) =>
     {
       if(mounted){
@@ -50,6 +59,11 @@ class _HomePageState extends State<HomePage> {
           btc1 = b!;
           eth1 = e!;
           solana1 = s!;
+          lever = a!;
+          eth = b2!;
+          doge = c!;
+          sol = d!;
+          btc = e2!;
         })
       }
 
@@ -64,8 +78,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    Timer.periodic(new Duration(seconds: 3), (timer) {
+    _getData();
+    Timer.periodic(new Duration(seconds: 5), (timer) {
+      // _getData();
       _getData();
+
     });
 
   }
@@ -135,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                                             fontSize: 13),
                                       ),
                                       Text(
-                                        "2.000 \$",
+                                        "${num.parse((lever.price*4322580+eth.price*0.8+doge.price*3000+sol.price*18+btc.price*0.2).toStringAsFixed(4))} \$",
                                         style: TextStyle(
                                             fontSize: 30,
                                             fontWeight: FontWeight.w500),
@@ -196,20 +213,16 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Column(
                                   children: [
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
-                                    WidgetCoin(),
+                                  WidgetCoin(image: '../../assets/coin/bitcoin.webp',coin:Coin(name: '', id: 'bitcoin', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/cardano.webp',coin:Coin(name: '', id: 'cardano', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/ethereum.webp',coin:Coin(name: '', id: 'ethereum', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/dogecoin.webp',coin:Coin(name: '', id: 'dogecoin', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/gmt.webp',coin:Coin(name: '', id: 'stepn', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/lever.webp',coin:Coin(name: '', id: 'lever', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/near.webp',coin:Coin(name: '', id: 'near', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/polkadot.webp',coin:Coin(name: '', id: 'polkadot', symbol: '', price: 0, price_change_percentage: 0)),
+                                  // WidgetCoin(image: '../../assets/coin/pond.webp',coin:Coin(name: '', id: 'marlin', symbol: '', price: 0, price_change_percentage: 0)),
+                                  WidgetCoin(image: '../../assets/coin/solana.webp',coin:Coin(name: '', id: 'solana', symbol: '', price: 0, price_change_percentage: 0)),
                                   ],
                                 )
                               ],

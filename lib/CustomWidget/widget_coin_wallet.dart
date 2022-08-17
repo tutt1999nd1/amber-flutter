@@ -5,17 +5,18 @@ import 'package:flutter/material.dart';
 import '../api/ApiService.dart';
 import '../model/model.dart';
 
-class WidgetCoin extends StatefulWidget {
+class WidgetCoinWallet extends StatefulWidget {
   final Coin coin;
   final String image;
-  const WidgetCoin({Key? key,required this.coin,required this.image}) : super(key: key);
+  final double total;
+  const WidgetCoinWallet({Key? key,required this.coin,required this.image,required this.total}) : super(key: key);
 
 
   @override
-  State<WidgetCoin> createState() => _WidgetCoinState();
+  State<WidgetCoinWallet> createState() => _WidgetCoinWalletState();
 }
 
-class _WidgetCoinState extends State<WidgetCoin> {
+class _WidgetCoinWalletState extends State<WidgetCoinWallet> {
   Coin coin = new Coin(name: '', id: '', symbol: '', price: 0, price_change_percentage: 0);
 
   void _getData() async {
@@ -42,9 +43,9 @@ class _WidgetCoinState extends State<WidgetCoin> {
   @override
   void initState() {
     _getData();
-    // Timer.periodic(new Duration(seconds: 3), (timer) {
-    //   // _getData();
-    // });
+    Timer.periodic(new Duration(seconds: 5), (timer) {
+      _getData();
+    });
 
   }
   @override
@@ -69,31 +70,16 @@ class _WidgetCoinState extends State<WidgetCoin> {
                   ],
                 )),
             Spacer(),
-            Text("${coin.price} \$",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16)),
-            Spacer(),
             Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: coin.price_change_percentage<0?Color(0xfff6455f):Color(0xffD2ebd85),
-                  style: BorderStyle.solid,
-                  width: 1.0,
-                ),
-                // color: Color(0xffD2ebd85),
-                color: coin.price_change_percentage<0?Color(0xfff6455f):Color(0xffD2ebd85),
-                // color: Colors.red,
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                child: Text("${num.parse(coin.price_change_percentage.toStringAsFixed(2))} %",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text("${widget.total}",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16)),
+                  Text("${num.parse((widget.total*coin.price).toStringAsFixed(2))} \$", style: TextStyle(color: Color(0xff707A8A))),
+                ],
               ),
             )
           ],
