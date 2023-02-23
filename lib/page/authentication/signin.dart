@@ -25,7 +25,6 @@ class _SignInScreenState extends State<SignInScreen> {
     else {
       return Future<bool>.value(false);
     }
-
   }
 
   @override
